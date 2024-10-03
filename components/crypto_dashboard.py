@@ -41,21 +41,21 @@ class CryptoDashboard:
             html.Div(style={'display': 'flex'}, children=[
                 dcc.Graph(id='area-chart',
                           style={'width': '90%', 'min-width': '300px'}),
-                dcc.Graph(id='volume-chart')  # Volume chart
+                dcc.Graph(id='volume-chart')
             ]),
             html.H2("Latest Prices"),
             html.Div(id='price-table'),
             html.Button("Download Chart Data", id="btn-download"),
-            dcc.Download(id="download-dataframe-xlsx")  # Download component
+            dcc.Download(id="download-dataframe-xlsx")
         ])
 
     def update_callbacks(self):
         @self.app.callback(
-            [Output('area-chart', 'figure'),
-             Output('volume-chart', 'figure'),  # New volume chart output
-             Output('price-table', 'children')],
-            [Input('crypto-dropdown', 'value'),
-             Input('time-dropdown', 'value')]
+            Output('area-chart', 'figure'),
+            Output('volume-chart', 'figure'),
+            Output('price-table', 'children'),
+            Input('crypto-dropdown', 'value'),
+            Input('time-dropdown', 'value')
         )
         def update_graph(selected_cryptos, selected_time):
             # Define period and interval based on selected time
@@ -88,7 +88,7 @@ class CryptoDashboard:
 
             # layout for latest prices
             price_rows = []
-            for i, crypto in enumerate(selected_cryptos):
+            for crypto in selected_cryptos:
                 last_row = self.data[crypto].iloc[-1]
                 price = last_row['Close']
                 change = price - self.data[crypto]['Close'].iloc[-2]

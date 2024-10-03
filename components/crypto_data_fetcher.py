@@ -6,8 +6,7 @@ class CryptoDataFetcher:
         self.cryptos = cryptos
 
     def fetch_prices(self, period="1d", interval="5m"):
-        data = {}
-        for crypto in self.cryptos:
-            ticker = yf.Ticker(crypto)
-            data[crypto] = ticker.history(period=period, interval=interval)
+        data = {crypto: yf.Ticker(crypto).history(
+            period=period, interval=interval) for crypto in self.cryptos}
+
         return data
