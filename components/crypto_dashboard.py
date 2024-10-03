@@ -94,25 +94,15 @@ class CryptoDashboard:
                 change = price - self.data[crypto]['Close'].iloc[-2]
                 timestamp = last_row.name.strftime("%m/%d/%Y - %H:%M:%S")
 
-                if i % 2 == 0:
-                    row = html.Div(style={'display': 'flex', 'justify-content': 'space-between', 'margin-bottom': '10px'}, children=[
-                        html.Div(children=[
-                            html.P(f"{crypto}", style={'margin': '0'}),
-                            html.P(f"${price:.2f}", style={'margin': '0'}),
-                            html.P(f"{change:.2f}", style={'margin': '0'}),
-                            html.P(f"{timestamp}", style={'margin': '0'}),
-                        ], style={'padding': '10px'})
-                    ])
-                    price_rows.append(row)
-                else:
-                    price_rows[-1].children.append(
-                        html.Div(children=[
-                            html.P(f"{crypto}", style={'margin': '0'}),
-                            html.P(f"${price:.2f}", style={'margin': '0'}),
-                            html.P(f"{change:.2f}", style={'margin': '0'}),
-                            html.P(f"{timestamp}", style={'margin': '0'}),
-                        ], style={'padding': '10px'})
-                    )
+                row = html.Div(style={'display': 'flex', 'justify-content': 'space-between', 'margin-bottom': '10px'}, children=[
+                    html.Div(children=[
+                        html.P(f"{crypto}", style={'margin': '0'}),
+                        html.P(f"${price:.2f}", style={'margin': '0'}),
+                        html.P(f"{change:.2f}", style={'margin': '0'}),
+                        html.P(f"{timestamp}", style={'margin': '0'}),
+                    ], style={'padding': '10px'})
+                ])
+                price_rows.append(row)
 
             prices_display = html.Div(
                 style={'display': 'flex', 'flex-wrap': 'wrap'}, children=price_rows)

@@ -17,3 +17,15 @@ The Cryptocurrency Dashboard is an interactive web application that visualizes r
 - yfinance: For fetching real-time cryptocurrency data from Yahoo Finance.
 - Pandas: For data manipulation and exporting data to Excel.
 - XlsxWriter: For writing data to Excel files.
+
+## Supported Cryptocurrencies
+The dashboard currently supports the following cryptocurrencies:
+
+- Bitcoin (BTC)
+- Ethereum (ETH)
+- Tether (USDT)
+- BNB (BNB)
+- Solana (SOL)
+- USDC (USDC)
+- XRP (XRP)
+- Lido Staked Ether (STETH)
